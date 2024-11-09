@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerta de Gas</title>
+  <script>
+    async function checkGasAlert() {
+      const response = await fetch('https://webhook.site/88a3bf55-6cd1-4b10-8c40-984aaca93dc7');
+      const data = await response.json();
+      document.getElementById('alert').textContent = data.alerta || 'Sin alerta';
+    }
+    setInterval(checkGasAlert, 5000); // Actualiza cada 5 segundos
+  </script>
+</head>
+<body onload="checkGasAlert()">
+  <h1>Monitor de Gas</h1>
+  <p id="alert">Cargando...</p>
+</body>
+</html>
